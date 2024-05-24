@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import Background from "@/assets/init_background.jpg"
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
