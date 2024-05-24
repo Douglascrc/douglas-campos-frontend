@@ -10,7 +10,8 @@ import { Login } from './pages/Login';
 import { AuthProvider } from './context/AuthContext';
 import { PrivateRoutes } from './utils/PrivateRoutes';
 import { Signup } from './pages/Signup';
-import  Home  from './pages/Home';
+import  Dashboard  from './pages/Dashboard';
+import Home from './pages/Home';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.Fragment>
@@ -20,9 +21,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Routes>
           <Route path='*' element={<ErrorPage />} />
-          <Route path='/' index element={<Home />} />
+          <Route path='/dashboard' index element={<Dashboard />} />
           <Route path='/login' index element={<Login />} />
           <Route path='/signup' index element={<Signup />} />
+          <Route path='/' index element={<Home />} />
           <Route path='' element={<PrivateRoutes />}>
             <Route path='/page01' element={<Page01 />} />
           </Route>
