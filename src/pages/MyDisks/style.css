@@ -1,4 +1,4 @@
-.carousel-home {
+.carousel-disks {
   width: 200%;
   animation: slide 30s linear infinite;
   &:hover {
