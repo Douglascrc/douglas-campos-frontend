@@ -1,6 +1,6 @@
 import React, { FormEvent, useState } from 'react'
 import Input from '../../components/Input'
-import { api } from '../../services/apiService'
+import { user_api } from '../../services/apiService'
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
@@ -28,7 +28,7 @@ export function Signup() {
 
     console.log(data);
 
-    await api.post("/api/v1/user/signup", data)
+    await user_api.post("/users/create", data)
     .then(resp => {
       console.log(resp.data);
       toast.dismiss(toastId);
@@ -48,7 +48,7 @@ export function Signup() {
         <img src={Logo} alt="Logo" className="w-16 h-16" />
         <h1 className="text-3xl font-bold">Criar Conta</h1>
         <form onSubmit={handleSigup} className="flex flex-col w-full mt-8 gap-2">
-          <Input type='text' onChange={event => setName(event.target.value)}>Nome Completo</Input>
+          <Input type='text' required onChange={event => setName(event.target.value)}>Nome</Input>
           <Input type='email' required onChange={event => setEmail(event.target.value)}>Email</Input>
           <Input type='tel' onChange={event => setTel(event.target.value)}>Telefone</Input>
           <Input type='password' required onChange={event => setPassword(event.target.value)}>Senha</Input>
