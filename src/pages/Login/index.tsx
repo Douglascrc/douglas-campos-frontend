@@ -19,7 +19,7 @@ export function Login() {
       toast.success("Login efetuado com sucesso!");
       
       setTimeout(() => {
-        _navigate('/Error/404');
+        _navigate('/dashboard');
       }, 2000);
 
     }).catch(() => {
