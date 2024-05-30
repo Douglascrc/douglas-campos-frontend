@@ -29,17 +29,17 @@ export const AuthProvider: React.FC<Props> = ({children}) => {
   }, []);
 
   const Login = useCallback(async (email: string, password: string) => {
-    const respAuth = await user_api.post('/users/auth', {email, password});
+    const respAuth = await user_api.post('/auth', {email, password});
 
     if(respAuth instanceof Error) {
       return respAuth.message;
     }
 
-    localStorage.setItem('@Auth.Token', JSON.stringify(respAuth.data.token));
+    localStorage.setItem('@Auth.Token', respAuth.data.token);
  
     user_api.defaults.headers.common.Authorization = `Basic ${respAuth.data.token}`;
     album_api.defaults.headers.common.Authorization = `Basic ${respAuth.data.token}`;
-    const respUserInfo = await user_api.get(`/users/${respAuth.data.id}`);
+    const respUserInfo = await user_api.get(`/${respAuth.data.id}`);
 
     if(respUserInfo instanceof Error) {
       return respUserInfo.message;
