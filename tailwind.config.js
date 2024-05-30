@@ -21,6 +21,14 @@ export default {
     extend: {
       backgroundImage: {
         'fundo': 'url("src/assets/init_background.jpg")',
+        'profile': 'url("src/assets/background_profile.jpg")',
+      },
+      backgroundSize: {
+        'size-person': '100% 160%',
+      },
+      backgroundPosition: {
+        'pos-custom': '0% 10%',  // 10% horizontal and 20% vertical
+        // Add as many as you need...
       },
       colors: {
         border: "hsl(var(--border))",
