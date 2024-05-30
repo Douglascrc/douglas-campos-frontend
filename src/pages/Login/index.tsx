@@ -38,7 +38,7 @@ export function Login() {
               <img src={logo} className="h-14" />
               <h1 className="text-xl font-semibold">Acesse sua conta</h1>
               {/* From */}
-              <form onSubmit={handleLogin} className="flex flex-col w-96 gap-8">
+              <form onSubmit={handleLogin} className="flex flex-col lg:w-96 w-full gap-8">
                 <Input onChange={e => setEmail(e.target.value)} type='email'>Email:</Input>
                 <Input onChange={e => setPassword(e.target.value)} type='password'>Senha:</Input>
                 <button type='submit' className="p-3 bg-zinc-900 text-white hover:bg-zinc-900/90 font-bold text-lg rounded-3xl transition mb-3">Entrar</button>
