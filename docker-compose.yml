@@ -1,5 +1,5 @@
 # Created by Andryev Lemes
-version: '3.2'
+version: '3.7'
 services:
   postgres_bootcamp:
     build:
@@ -17,7 +17,7 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
-    container_name: rabbitmq_bootcamp
+    container_name: rabbitmqq_bootcamp
     networks:
       - backend
   bootcamp-api:

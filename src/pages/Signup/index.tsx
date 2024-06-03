@@ -28,7 +28,7 @@ export function Signup() {
 
     console.log(data);
 
-    await user_api.post("/users/create", data)
+    await user_api.post("/create", data)
     .then(resp => {
       console.log(resp.data);
       toast.dismiss(toastId);
