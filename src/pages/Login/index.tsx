@@ -19,7 +19,7 @@ export function Login() {
       toast.success("Login efetuado com sucesso!");
       
       setTimeout(() => {
-        _navigate('/Error/404');
+        _navigate('/MyDisks');
       }, 2000);
 
     }).catch(() => {
@@ -29,7 +29,7 @@ export function Login() {
 
   return (
     <>
-      {isAuthenticated && <Navigate to='Error/404' />}
+      {isAuthenticated && <Navigate to='/MyDisks' />}
       <div className="bg-fundo bg-cover bg-no-repeat h-screen">
         <div className="flex items-center justify-center h-screen backdrop-brightness-50 backdrop-blur-sm">
           {/* Container */}
