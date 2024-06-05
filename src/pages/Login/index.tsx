@@ -2,14 +2,13 @@ import React, { FormEvent, useState } from 'react'
 import logo from '../../assets/logo.svg';
 import  Input from '@/components/Input';
 import { useAuth } from '@/hooks/UseAuth';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isAuthenticated } = useAuth();
-  const _navigate = useNavigate();
 
   async function handleLogin(event: FormEvent) {
     event.preventDefault();
@@ -17,10 +16,6 @@ export function Login() {
     login(email, password)
     .then(() => { 
       toast.success("Login efetuado com sucesso!");
-      
-      setTimeout(() => {
-        _navigate('/MyDisks');
-      }, 2000);
 
     }).catch(() => {
       toast.error("Erro ao efetuar login!");
