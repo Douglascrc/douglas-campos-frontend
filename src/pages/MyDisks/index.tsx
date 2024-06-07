@@ -23,7 +23,7 @@ const MyDisks = () => {
   const _navegate = useNavigate();
 
   useEffect(() => {  
-    album_api.get('/albums/all?SearchText=Rock', {headers: { Authorization: `Basic ${localStorage.getItem('@Auth.Token')}`}})
+    album_api.get('/all?SearchText=Rock', {headers: { Authorization: `Basic ${localStorage.getItem('@Auth.Token')}`}})
     .then((resp) => {
       setAlbums(resp.data);
       console.log(albums);
