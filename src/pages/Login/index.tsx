@@ -24,7 +24,7 @@ export function Login() {
 
   return (
     <>
-      {isAuthenticated && <Navigate to='/MyDisks' />}
+      {isAuthenticated && <Navigate to='/dashboard' />}
       <div className="bg-fundo bg-cover bg-no-repeat h-screen">
         <div className="flex items-center justify-center h-screen backdrop-brightness-50 backdrop-blur-sm">
           {/* Container */}
