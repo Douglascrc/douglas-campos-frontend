@@ -56,9 +56,9 @@ const Dashboard = () =>  {
         <input  name="search"
                   type="text"
                   className="bg-[#19181F] ring-1 ring-white text-white hover:ring-2 focus:ring-2 w-full focus:outline-none rounded-md p-2 pr-14"
-                  placeholder="Procure algo..." onChange={(e) => setSearch(e.target.value)}/>
-                  <button type='submit' onClick={fetchAlbums}>
-                    <FiSearch className='w-8 h-8'/>
+                  placeholder="Procure algo..." onChange={(e) => setSearch(e.target.value)} />
+                  <button type='submit' className='absolute translate-x-28' onClick={fetchAlbums}>
+                    <FiSearch className='w-6 h-6'/>
                   </button>
       </div>
 
