@@ -1,11 +1,4 @@
-export class UserModel {
-  id?: number
-  name?: string
-  email?: string
-  password?: string
-}  
-
-export class AlbumModel {
+export interface AlbumModel {
   albumType: string
   artists: Artist[]
   externalUrls: ExternalUrls
