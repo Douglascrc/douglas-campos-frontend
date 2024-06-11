@@ -1,7 +1,6 @@
 import { AlbumModel } from '@/models/AlbumModel';
 import { album_api } from '@/services/apiService';
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import './style.css';
 import Navbar from '@/components/Navbar';
 
