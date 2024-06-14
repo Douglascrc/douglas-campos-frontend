@@ -8,6 +8,16 @@ import Navbar from '@/components/Navbar';
 const Dashboard = () =>  {
   const [albums, setAlbums] = useState<AlbumModel[]>([]);
   const [search, setSearch] = useState<string>('');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedAlbum, setSelectedAlbum] = useState<AlbumModel | null>(null);
+
+
+  const handleOpenPopup = (album: AlbumModel) => {
+    setSelectedAlbum(album)
+    setIsOpen(true) 
+  } 
+
+  const handleClosePopup = () => setIsOpen(false)
 
   const fetchAlbums = () => {
 
@@ -27,9 +37,7 @@ const Dashboard = () =>  {
     fetchAlbums();
   },[])
 
-  function handleLink(url?: string) {
-    window.open(url, '_blank');
-  }
+  
 
   return (
     
@@ -69,12 +77,33 @@ const Dashboard = () =>  {
        
         { albums?.map((album, i) => (
           <div key={i} style={{'--bg-fundo': `url(${album.images[0].url})`} as React.CSSProperties} className="bg-[image:var(--bg-fundo)] bg-cover bg-no-repeat w-60 h-[245px] rounded-md">
-            <div onClick={() => handleLink(album.externalUrls.externalUrls.spotify)} className="flex h-full justify-center items-center backdrop-brightness-50 p-6 cursor-pointer">
+            <div onClick={() => handleOpenPopup(album)} className="flex h-full justify-center items-center backdrop-brightness-50 p-6 cursor-pointer">
               <h1 className="text-2xl font-semibold text-center text-white">{album.name}</h1>
             </div>
           </div>
         ))}
+        
       </Card>
+      {isOpen && selectedAlbum &&(
+        <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50'>
+          <div className='flex bg-white w-[607px] h-[306px] justify-between items-stretch rounded-2xl'>
+
+            <div className='w-1/2 h-full flex justify-center items-center'>
+              <img src={selectedAlbum.images[0].url} alt={selectedAlbum.name} className='h-full object-cover' />
+            </div>
+
+            <div className='w-1/2 flex flex-col justify-center items-start p-4'>
+              <h2 className='text-2xl mb-4'>{selectedAlbum.name}</h2>
+              <p>Detalhes do Álbum</p>
+              
+            </div>
+            <button onClick={() => handleClosePopup()} className="absolute top-4 right-4">Close</button>
+          </div>
+          <button className='bg-[#FBBC05]'>
+              Comprar Álbum
+            </button>
+        </div>
+      )}
     </div>
     
   )
