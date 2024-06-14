@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Card } from '@/components/ui/card';
 import { FiSearch } from 'react-icons/fi';
 import Navbar from '@/components/Navbar';
+import cancelIcon from '@/assets/cancelIcon.svg'
 
 const Dashboard = () =>  {
   const [albums, setAlbums] = useState<AlbumModel[]>([]);
@@ -87,21 +88,21 @@ const Dashboard = () =>  {
       {isOpen && selectedAlbum &&(
         <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50'>
           <div className='flex bg-white w-[607px] h-[306px] justify-between items-stretch rounded-2xl'>
-
-            <div className='w-1/2 h-full flex justify-center items-center'>
-              <img src={selectedAlbum.images[0].url} alt={selectedAlbum.name} className='h-full object-cover' />
+            <div className='flex h-full w-full'>
+              <div className=' h-full flex rounded-l-xl overflow-hidden'>
+                <img src={selectedAlbum.images[0].url} alt={selectedAlbum.name} className='object-cover' />
+              </div>
+              <div className='flex flex-col items-start p-4'>
+                <h2 className='text-2xl '>{selectedAlbum.name}</h2>
+                <p className='text-lg mt-16'>Detalhes do Álbum</p>
+                <button className='bg-[#FBBC05] w-full text-white rounded-2xl p-2 mt-24 self-start'>
+                Comprar
+                </button>
+              </div>          
             </div>
-
-            <div className='w-1/2 flex flex-col justify-center items-start p-4'>
-              <h2 className='text-2xl mb-4'>{selectedAlbum.name}</h2>
-              <p>Detalhes do Álbum</p>
-              
-            </div>
-            <button onClick={() => handleClosePopup()} className="absolute top-4 right-4">Close</button>
+            
+            <button onClick={() => handleClosePopup()} className="relative -top-32 right-4"> <img src={cancelIcon} alt="Cancel Icon" /> </button>
           </div>
-          <button className='bg-[#FBBC05]'>
-              Comprar Álbum
-            </button>
         </div>
       )}
     </div>
