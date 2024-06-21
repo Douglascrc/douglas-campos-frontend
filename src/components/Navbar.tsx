@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '@/assets/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
@@ -7,8 +7,19 @@ import { useAuth } from '@/hooks/UseAuth';
 
 const Navbar = () => {
 
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
   const _navigate = useNavigate()
-  const {isAuthenticated} = useAuth();
+  const {isAuthenticated, logout} = useAuth();
+
+  const toggleMenu = () => {
+    setIsMenuVisible(!isMenuVisible);
+  }
+
+  const handleLogout = () => {
+    logout();
+    setIsMenuVisible(false);
+    
+  }
 
   return ( 
      <> 
@@ -26,11 +37,20 @@ const Navbar = () => {
             <li>
               <Link to={'/'} > <button className='text-white font-medium text-base px-4 py-2'>Carteira</button> </Link>
             </li>
-            <li>   
-            <Avatar>
-              <AvatarImage src={avatar} />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <li>
+            <div onClick={toggleMenu} className="cursor-pointer">
+              <Avatar>
+                <AvatarImage src={avatar} />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </div>   
+            {isMenuVisible && (
+                <div className="absolute mt-2 z-50 bg-[#0B477E] cursor-pointer rounded-md py-2">
+                  <ul>
+                    <button className="px-4 text-white font-bold cursor-pointer bright-text" onClick={handleLogout}>Logout</button>
+                  </ul>
+                </div>
+              )}
             </li>
            </ul>
         </div>

@@ -9,8 +9,9 @@ const Home = () => {
       return ( 
        <>
          <div className="bg-no-repeat bg-cover bg-fundo bg-center h-full">
-          <Navbar />
-          <section className="flex flex-wrap h-screen gap-4 backdrop-brightness-50">
+          
+          <section className="flex flex-col h-screen gap-4 backdrop-brightness-50">
+            <Navbar />
             <main className='flex flex-col max-w-[800px] pl-[100px] items-start gap-8'>
                <div className='gap-6 my-16'>
                   <h1 className='text-white font-semibold text-[64px]'>A história da música não pode ser esquecida!</h1>
