@@ -1,7 +1,6 @@
 import { AlbumModel } from '@/models/AlbumModel';
 import { album_api } from '@/services/apiService';
 import React, { useEffect, useState } from 'react'
-import { Card } from '@/components/ui/card';
 import { FiSearch } from 'react-icons/fi';
 import Navbar from '@/components/Navbar';
 import cancelIcon from '@/assets/cancelIcon.svg'
@@ -74,17 +73,17 @@ const Dashboard = () =>  {
       <div className='justify-start ml-4'>
         <h1 className="text-2xl font-semibold text-white">Trends</h1>
       </div>
-      <Card className="flex flex-wrap justify-center h-full gap-4 border-none m-2">
+      <div className="carousel-disks flex gap-2 overflow-x-auto w-full absolute m-4 border-none">
        
         { albums?.map((album, i) => (
-          <div key={i} style={{'--bg-fundo': `url(${album.images[0].url})`} as React.CSSProperties} className="bg-[image:var(--bg-fundo)] bg-cover bg-no-repeat w-60 h-[245px] rounded-md">
+          <div key={i} style={{'--bg-fundo': `url(${album.images[0].url})`, minWidth: '240px'} as React.CSSProperties} className="bg-[image:var(--bg-fundo)] bg-cover bg-no-repeat w-60 h-[245px] rounded-md">
             <div onClick={() => handleOpenPopup(album)} className="flex h-full justify-center items-center backdrop-brightness-50 p-6 cursor-pointer">
               <h1 className="text-2xl font-semibold text-center text-white">{album.name}</h1>
             </div>
           </div>
         ))}
         
-      </Card>
+      </div>
       {isOpen && selectedAlbum &&(
         <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50'>
           <div className='flex bg-white w-[607px] h-[306px] justify-between items-stretch rounded-2xl'>
@@ -95,7 +94,8 @@ const Dashboard = () =>  {
               <div className='flex flex-col items-start p-4'>
                 <h2 className='text-2xl '>{selectedAlbum.name}</h2>
                 <p className='text-lg mt-16'>Detalhes do Álbum</p>
-                <button className='bg-[#FBBC05] w-full text-white rounded-2xl p-2 mt-24 self-start'>
+                <div className='flex-grow'></div>
+                <button className='bg-[#FBBC05] w-full text-white justify-center items-center rounded-2xl p-2 self-start'>
                 Comprar
                 </button>
               </div>          
