@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { FiSearch } from 'react-icons/fi';
 import Navbar from '@/components/Navbar';
 import cancelIcon from '@/assets/cancelIcon.svg'
+import { format } from 'date-fns';
+import toast from 'react-hot-toast';
 
 const Dashboard = () =>  {
   const [albums, setAlbums] = useState<AlbumModel[]>([]);
@@ -11,6 +13,41 @@ const Dashboard = () =>  {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedAlbum, setSelectedAlbum] = useState<AlbumModel | null>(null);
 
+  const handlePurchase =  () => {
+    if (!selectedAlbum) {
+      toast.error("Álbum não selecionado!");
+      return;
+    }
+    const data = JSON.parse(localStorage.getItem('@Auth.Data') || "{}");
+    
+    const requestBody = {
+      
+      name: selectedAlbum.name,
+      artistName: selectedAlbum.artists[0].name, 
+      idSpotify: selectedAlbum.id, 
+      imageUrl: selectedAlbum.images[0]?.url, 
+      value: selectedAlbum.value,
+      users: {
+        id: data['id'],
+        email: data['email'],
+        password: data['password']
+      }
+    };
+
+    album_api.post('/sale', requestBody).then((resp) => {
+      console.log(resp);
+      toast.success("Compra efetuada com sucesso!");
+      handleClosePopup();
+    }).catch(error => {
+      if(error === 400 || error === 500) {
+        toast.error("Erro ao efetuar a compra!");
+      }
+      toast.error("Você já comprou esse álbum!");
+    });
+
+    console.log(requestBody);
+    return requestBody
+  };
 
   const handleOpenPopup = (album: AlbumModel) => {
     setSelectedAlbum(album)
@@ -42,10 +79,6 @@ const Dashboard = () =>  {
   return (
     
     <div className="flex flex-col min-h-screen bg-[#19181F]">
-      
-      <nav>
-        
-      </nav>
 
       <div className='flex h-[70vh] relative bg-profile bg-size-person bg-pos-custom bg-no-repeat' >
         <div className="w-full h-full absolute bg-gradient-to-t from-[#19181F] to-10%"></div>
@@ -92,10 +125,16 @@ const Dashboard = () =>  {
                 <img src={selectedAlbum.images[0].url} alt={selectedAlbum.name} className='object-cover' />
               </div>
               <div className='flex flex-col items-start p-4'>
-                <h2 className='text-2xl '>{selectedAlbum.name}</h2>
-                <p className='text-lg mt-16'>Detalhes do Álbum</p>
+                <h2 className='text-2xl font-bold'>{selectedAlbum.name}</h2>
+
+                <div className='flex flex-col mt-6 gap-6'>
+                  <p className='text-base text-gray-700 font-semibold '>Artista: {selectedAlbum.artists[0].name}</p>                
+                  <p className='text-base text-gray-700 font-semibold'>Data de Lançamento: {format(new Date (selectedAlbum.releaseDate),'dd/MM/yyyy')}</p>
+                  <p className='text-base text-gray-700 font-semibold'>Preço: R${selectedAlbum.value}</p>
+                </div>
+
                 <div className='flex-grow'></div>
-                <button className='bg-[#FBBC05] w-full text-white justify-center items-center rounded-2xl p-2 self-start'>
+                <button onClick={() => handlePurchase()} className='bg-[#FBBC05] w-full text-white justify-center items-center rounded-2xl p-2 self-start'>
                 Comprar
                 </button>
               </div>          
