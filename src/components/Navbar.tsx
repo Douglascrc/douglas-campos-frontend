@@ -20,6 +20,9 @@ const Navbar = () => {
     setIsMenuVisible(false);
     
   }
+  const handleDashboard = () => {
+    _navigate('/dashboard');
+  }
 
   return ( 
      <> 
@@ -45,9 +48,14 @@ const Navbar = () => {
               </Avatar>
             </div>   
             {isMenuVisible && (
-                <div className="absolute mt-2 z-50 bg-[#0B477E] cursor-pointer rounded-md py-2">
-                  <ul>
-                    <button className="px-4 text-white font-bold cursor-pointer bright-text" onClick={handleLogout}>Logout</button>
+                <div className="absolute mt-2 bg-[#0B477E] cursor-pointer rounded-md py-2">
+                  <ul className='flex flex-col gap-2'>
+                    <button className="px-1 text-white hover:font-bold text-base " onClick={handleLogout}>Logout</button>
+                    <hr className='border-t border-white mx-2' />
+                    <button className='px-1 text-white text-base font-normal inline-block w-full hover:font-bold 'onClick={handleDashboard}>
+                      Dashboard
+                    </button>
+                    <hr className='border-t border-white mx-2' />
                   </ul>
                 </div>
               )}
