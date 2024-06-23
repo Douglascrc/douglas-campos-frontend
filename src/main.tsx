@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 import './global.css';
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -13,25 +13,25 @@ import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.Fragment>
-    <Toaster position='top-right' toastOptions={{ duration: 2000 }} />
-    <AuthProvider>
-      {/* REACT ROUTER */}
-      <BrowserRouter>
-        <Routes>
-          <Route path='*' element={<ErrorPage />} />
-          <Route path='/dashboard' index element={<Dashboard />} />
-          <Route path='/login' index element={<Login />} />
-          <Route path='/signup' index element={<Signup />} />
-          <Route path='/' index element={<Home />} />
+ <React.Fragment>
+  <Toaster position='top-right' toastOptions={{ duration: 2000 }} />
+  <AuthProvider>
+   {/* REACT ROUTER */}
+   <BrowserRouter>
+    <Routes>
+     <Route path='*' element={<ErrorPage />} />
+     <Route path='/dashboard' index element={<Dashboard />} />
+     <Route path='/login' index element={<Login />} />
+     <Route path='/signup' index element={<Signup />} />
+     <Route path='/' index element={<Home />} />
 
-          <Route path='' element={<PrivateRoutes />}>
-            <Route path='/MyDisks' element={<MyDisks />} />
-          </Route>
+     <Route path='' element={<PrivateRoutes />}>
+      <Route path='/MyDisks' element={<MyDisks />} />
+     </Route>
 
-        </Routes>
-      </BrowserRouter>
-      {/* REACT ROUTER */}
-    </AuthProvider>
-  </React.Fragment>
-)
+    </Routes>
+   </BrowserRouter>
+   {/* REACT ROUTER */}
+  </AuthProvider>
+ </React.Fragment>
+);
