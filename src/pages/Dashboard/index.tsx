@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { AlbumModel } from '@/models/AlbumModel';
 import { album_api } from '@/services/apiService';
 import React, { useEffect, useState } from 'react';
@@ -13,6 +12,7 @@ const Dashboard = () =>  {
  const [search, setSearch] = useState<string>('');
  const [isOpen, setIsOpen] = useState<boolean>(false);
  const [selectedAlbum, setSelectedAlbum] = useState<AlbumModel | null>(null);
+ 
  const handlePurchase =  () => {
   if (!selectedAlbum) {
    toast.error('Álbum não selecionado!');
