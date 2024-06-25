@@ -1,19 +1,17 @@
-/* eslint-disable linebreak-style */
-import { AlbumModel } from '@/models/AlbumModel';
 import { album_api } from '@/services/apiService';
 import { useEffect, useState } from 'react';
-import './style.css';
 import Navbar from '@/components/Navbar';
 
 
 const MyDisks = () => {
- const [albums, setAlbums] = useState<AlbumModel[]>([]);
+ const [albums, setAlbums] = useState([]);
  const [investment, setInvestment] = useState(Number);
  const [totalAlbums, setTotalAlbums] = useState(Number);
 
- useEffect(() => {  
-  album_api.defaults.headers.common.Authorization = `Basic ${localStorage.getItem('@Auth.Token')}`;
-  album_api.get('/my-collection').then(resp => {
+ useEffect(() => {
+  const fetchData = async () => {
+   album_api.defaults.headers.common.Authorization = `Basic ${localStorage.getItem('@Auth.Token')}`;
+   const resp = await album_api.get('/my-collection');
    const albums = resp.data;
    setAlbums(albums);
 
@@ -24,14 +22,15 @@ const MyDisks = () => {
    const valueFormated = value.toFixed(2).replace('.', ',');
    setInvestment(valueFormated);
    console.log(resp);
-  });
-    
+  };
+
+  fetchData();
  }, []);
 
  return (
-  <main className=" h-screen bg-[#19181F] ">
+  <main className="h-full bg-[#19181F] ">
    <Navbar/>
-   <div className="pt-44 pl-12 MyDiscs">
+   <div className="pt-44 pl-12">
     <h1 className=" font-bold text-white " style={{fontSize: '35px'}}>Meus Discos</h1>
    </div>
 
@@ -47,12 +46,13 @@ const MyDisks = () => {
     </div>
    </section >  
 
-   <div className="mt-10 flex flex-wrap pl-10 pb-10 gap-4 albumsMobile">
+   <div className="mt-10 flex flex-wrap  pl-10 pb-10 gap-4">
     { albums?.map((album, i) => (
-     <div key={i} style={{backgroundImage:`url(${album.images})`}} className="bg-cover  bg-no-repeat w-60 h-[245px] rounded-md">                                       
+     <div key={i} style={{backgroundImage:`url(${album.imageUrl})`}} className="bg-cover  bg-no-repeat w-60 h-[245px]   rounded-md">
+                                        
      </div>
     ))}
-   </div>                                               
+   </div>                                         
   </main>
  );
 };
