@@ -28,9 +28,9 @@ This command run the project
 <table style="border:none;">
   <tr>
     <td style="text-align:center; border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" width="32" height="32" alt="Vite icon"><br>Vite</td>
-    <td style="text-align:center;border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" width="32" height="32" alt="React icon"><br>React</td>
-    <td style="text-align:center;border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" width="32" height="32" alt="Docker icon"><br>Docker</td>
-    <td style="text-align:center;border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" width="32" height="32" alt="Node.js icon"><br>Node.js</td>
-    <td style="text-align:center;border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width="32" height="32" alt="Tailwind CSS icon"><br>Tailwind CSS</td>
+    <td style="text-align:center; border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" width="32" height="32" alt="React icon"><br>React</td>
+    <td style="text-align:center; border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" width="32" height="32" alt="Docker icon"><br>Docker</td>
+    <td style="text-align:center; border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" width="32" height="32" alt="Node.js icon"><br>Node.js</td>
+    <td style="text-align:center; border:none;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width="32" height="32" alt="Tailwind CSS icon"><br>Tailwind CSS</td>
   </tr>
 </table>
