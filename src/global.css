@@ -28,3 +28,28 @@ html {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.carousel-disks {
+  width:200%;
+  animation: slide 20s linear  infinite;
+  position: relative;
+  
+  &:hover{
+      animation-play-state: paused;
+  }
+
+}
+
+@keyframes slide{
+0%{
+    left:0;
+}
+100%{
+    left: -100%;
+}
+}
+
+.buy{
+  
+  animation: pulse 1s infinite alternate;
+}
