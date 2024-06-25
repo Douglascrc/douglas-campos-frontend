@@ -12,7 +12,7 @@ const Dashboard = () =>  {
  const [search, setSearch] = useState<string>('');
  const [isOpen, setIsOpen] = useState<boolean>(false);
  const [selectedAlbum, setSelectedAlbum] = useState<AlbumModel | null>(null);
- 
+
  const handlePurchase =  () => {
   if (!selectedAlbum) {
    toast.error('Álbum não selecionado!');
@@ -112,6 +112,7 @@ const Dashboard = () =>  {
      <div key={i} style={{'--bg-fundo': `url(${album.images[0].url})`, minWidth: '240px'} as React.CSSProperties} className="bg-[image:var(--bg-fundo)] bg-cover bg-no-repeat w-60 h-[245px] rounded-md">
       <div onClick={() => handleOpenPopup(album)} className="flex h-full justify-center items-center backdrop-brightness-50 p-6 cursor-pointer">
        <h1 className="text-2xl font-semibold text-center text-white">{album.name}</h1>
+       <h1 className="text-xl font-semibold text-white self-end absolute">R$ {album.value}</h1>
       </div>
      </div>
     ))}
