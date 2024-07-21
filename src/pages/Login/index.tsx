@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import logo from '../../assets/logo.svg';
 import  Input from '@/components/Input';
 import { useAuth } from '@/hooks/UseAuth';

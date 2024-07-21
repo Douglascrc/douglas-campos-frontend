@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Input from '../../components/Input';
 import { user_api } from '../../services/apiService';
 import toast from 'react-hot-toast';
