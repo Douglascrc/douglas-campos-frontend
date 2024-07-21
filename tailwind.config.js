@@ -20,8 +20,8 @@ export default {
   },
   extend: {
    backgroundImage: {
-    'fundo': 'url("src/assets/init_background.jpg")',
-    'profile': 'url("src/assets/background_profile.jpg")',
+    'fundo': 'url("./src/assets/init_background.jpg")',
+    'profile': 'url("./src/assets/background_profile.jpg")',
    },
    backgroundSize: {
     'size-person': '100% 160%',
