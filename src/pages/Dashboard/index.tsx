@@ -56,18 +56,27 @@ const Dashboard = () =>  {
 
  const handleClosePopup = () => setIsOpen(false);
 
- const fetchAlbums = () => {
-
-  album_api.defaults.headers.common.Authorization = `Basic ${localStorage.getItem('@Auth.Token')}`;
-
-  if(search === '') {
-   return null; 
+ const fetchAlbums = async () => {
+  try {
+   console.log('Token:', localStorage.getItem('@Auth.Token')); // Para verificar se o token está sendo lido corretamente
+   console.log('Search Text:', search); // Para verificar o valor de 'search'
+      
+   album_api.defaults.headers.common.Authorization = `Basic ${localStorage.getItem('@Auth.Token')}`;
+      
+   if (search === '') {
+    return null;
+   }
+      
+   const response = await album_api.get(`/all?searchText=${search}`);
+   console.log('API Response:', response); 
+      
+   const data = response.data.content ? response.data.content : [];
+   console.log('Data:', data); 
+      
+   setAlbums(data);
+  } catch (error) {
+   console.error('Erro ao buscar álbuns:', error);
   }
-  album_api.get(`/all?searchText=${search}`)
-   .then((resp) => {
-    setAlbums(resp.data);
-    console.log(albums);
-   });
  };
 
  useEffect(() => {
