@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 
 
 const MyDisks = () => {
- const [albums, setAlbums] = useState([]);
+ const [albums, setAlbums] = useState<{ imageUrl: string }[]>([]);
  const [investment, setInvestment] = useState(Number);
  const [totalAlbums, setTotalAlbums] = useState(Number);
 
