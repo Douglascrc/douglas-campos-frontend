@@ -839,7 +839,7 @@ video {
   background-image: var(--bg-fundo);
 }
   .bg-fundo {
-  background-image: url("src/assets/init_background.jpg");
+  background-image: url("./src/assets/init_background.jpg");
 }
   .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
