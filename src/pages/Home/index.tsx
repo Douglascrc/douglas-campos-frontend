@@ -1,14 +1,15 @@
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-
+import backgroundImage from '../../assets/init_background.jpg';
 const Home = () => {
    
  const _navigate = useNavigate();
 
  return ( 
   <>
-   <div className="bg-no-repeat bg-cover bg-fundo bg-center h-full">
+   <div className="bg-no-repeat bg-cover bg-center h-full" 
+    style={{ backgroundImage: `url(${backgroundImage})` }}>
           
     <section className="flex flex-col h-screen gap-4 backdrop-brightness-50">
      <Navbar />

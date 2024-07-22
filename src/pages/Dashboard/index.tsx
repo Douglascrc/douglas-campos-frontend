@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import cancelIcon from '@/assets/cancelIcon.svg';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
+import backgroundImage from '../../assets/background_profile.jpg';
 
 const Dashboard = () =>  {
  const [albums, setAlbums] = useState<AlbumModel[]>([]);
@@ -13,7 +14,7 @@ const Dashboard = () =>  {
  const [isOpen, setIsOpen] = useState<boolean>(false);
  const [selectedAlbum, setSelectedAlbum] = useState<AlbumModel | null>(null);
 
- const handlePurchase =  () => {
+ const handlePurchase =  async() => {
   if (!selectedAlbum) {
    toast.error('Álbum não selecionado!');
    return;
@@ -25,7 +26,7 @@ const Dashboard = () =>  {
    name: selectedAlbum.name,
    artistName: selectedAlbum.artists[0].name, 
    idSpotify: selectedAlbum.id, 
-   imageUrl: selectedAlbum.images[0]?.url, 
+   imageUrl: selectedAlbum.images[0].url, 
    value: selectedAlbum.value,
    users: {
     id: data['id'],
@@ -34,17 +35,23 @@ const Dashboard = () =>  {
    }
   };
 
-  album_api.post('/sale', requestBody).then((resp) => {
+  console.log('Sending requestBody:', requestBody);
+
+  if (!selectedAlbum.name || !selectedAlbum.id || !data['id'] || !data['email']) {
+   console.error('Missing required fields in requestBody');
+   toast.error('Dados incompletos para efetuar a compra!');
+   return;
+  }
+
+  try {
+   const resp = await album_api.post('/sale', requestBody);
    console.log(resp);
    toast.success('Compra efetuada com sucesso!');
    handleClosePopup();
-  }).catch(error => {
-   if(error === 400 || error === 500) {
-    toast.error('Erro ao efetuar a compra!');
-   }
-   toast.error('Você já comprou esse álbum!');
-  });
-
+  } catch (error) {
+   console.error('Error sending request:', error);
+   toast.error('Erro ao efetuar a compra!');
+  }
   console.log(requestBody);
   return requestBody;
  };
@@ -57,12 +64,9 @@ const Dashboard = () =>  {
  const handleClosePopup = () => setIsOpen(false);
 
  const fetchAlbums = async () => {
-  try {
-   console.log('Token:', localStorage.getItem('@Auth.Token')); // Para verificar se o token está sendo lido corretamente
-   console.log('Search Text:', search); // Para verificar o valor de 'search'
-      
+  try { 
    album_api.defaults.headers.common.Authorization = `Basic ${localStorage.getItem('@Auth.Token')}`;
-      
+     
    if (search === '') {
     return null;
    }
@@ -89,7 +93,8 @@ const Dashboard = () =>  {
     
   <div className="flex flex-col min-h-screen bg-[#19181F]">
 
-   <div className='flex h-[70vh] relative bg-profile bg-size-person bg-pos-custom bg-no-repeat' >
+   <div className='flex h-[70vh] relative bg-profile bg-size-person bg-pos-custom bg-no-repeat'
+    style={{backgroundImage: `url(${backgroundImage})`}} >
     <div className="w-full h-full absolute bg-gradient-to-t from-[#19181F] to-10%"></div>
 
     <main className='flex flex-col w-full h-full bg-opacity-50 bg-neutral-950 '>

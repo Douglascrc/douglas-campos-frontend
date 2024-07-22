@@ -19,10 +19,6 @@ export default {
    },
   },
   extend: {
-   backgroundImage: {
-    'fundo': `url("${process.env.VITE_ASSETS_PATH}/src/assets/init_background.jpg")`,
-    'profile': 'url("./src/assets/background_profile.jpg")',
-   },
    backgroundSize: {
     'size-person': '100% 160%',
    },
