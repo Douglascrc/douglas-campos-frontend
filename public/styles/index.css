@@ -839,13 +839,13 @@ video {
   background-image: var(--bg-fundo);
 }
   .bg-fundo {
-  background-image: url("./src/assets/init_background.jpg");
+  background-image: url("src/assets/init_background.jpg");
 }
   .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
   .bg-profile {
-  background-image: url("./src/assets/background_profile.jpg");
+  background-image: url("src/assets/background_profile.jpg");
 }
   .from-\[\#19181F\] {
   --tw-gradient-from: #19181F var(--tw-gradient-from-position);
