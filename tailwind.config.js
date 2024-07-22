@@ -20,7 +20,7 @@ export default {
   },
   extend: {
    backgroundImage: {
-    'fundo': 'url("src/assets/init_background.jpg")',
+    'fundo': `url("${import.meta.env.BASE_URL}src/assets/init_background.jpg")`,
     'profile': 'url("./src/assets/background_profile.jpg")',
    },
    backgroundSize: {
