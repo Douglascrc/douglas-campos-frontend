@@ -4,6 +4,7 @@ import  Input from '@/components/Input';
 import { useAuth } from '@/hooks/UseAuth';
 import { Navigate} from 'react-router-dom';
 import toast from 'react-hot-toast';
+import backgroundImage from '@/assets/init_background.jpg';
 
 export function Login() {
  const [email, setEmail] = useState('');
@@ -25,7 +26,7 @@ export function Login() {
  return (
   <>
    {isAuthenticated && <Navigate to='/dashboard' />}
-   <div className="bg-fundo bg-cover bg-no-repeat h-screen">
+   <div className="bg-fundo bg-no-repeat h-screen" style={{backgroundImage: `url(${backgroundImage})`}}>
     <div className="flex items-center justify-center h-screen backdrop-brightness-50 backdrop-blur-sm">
      {/* Container */}
      <div className="flex justify-center max-w-[544px] w-1/2 h-2/3 py-14 bg-white rounded-3xl">

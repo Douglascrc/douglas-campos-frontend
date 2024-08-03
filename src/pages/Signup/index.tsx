@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 import Logo from '@/assets/logo.svg';
 import { Link } from 'react-router-dom';
+import backgroundImage from '@/assets/init_background.jpg';
 
 export function Signup() {
  const [name, setName] = useState('');
@@ -41,7 +42,7 @@ export function Signup() {
  }
 
  return (
-  <main className="w-full h-screen flex items-center justify-center bg-fundo  bg-cover bg-no-repeat">
+  <main className="w-full h-screen flex items-center justify-center bg-cover bg-no-repeat" style={{backgroundImage: `url(${backgroundImage})`}}>
    <div className="absolute inset-0 bg-black opacity-80"></div>
    <div className="relative flex flex-col bg-white rounded-3xl h-fit w-full max-w-[420px] max-h-[623px] items-center p-8 shadow-md">
         
