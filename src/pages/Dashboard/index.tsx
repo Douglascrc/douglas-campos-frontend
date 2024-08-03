@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar';
 import cancelIcon from '@/assets/cancelIcon.svg';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
-import backgroundImage from '../../assets/background_profile.jpg';
+import backgroundImage from '@/assets/background_profile.jpg';
 
 const Dashboard = () =>  {
  const [albums, setAlbums] = useState<AlbumModel[]>([]);
@@ -134,7 +134,7 @@ const Dashboard = () =>  {
    </div>
    {isOpen && selectedAlbum &&(
     <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50'>
-     <div className='flex bg-white w-[607px] h-[306px] justify-between items-stretch rounded-2xl'>
+     <div className='flex bg-white w-[607px] h-[306px] justify-between items-stretch rounded-2xl relative'>
       <div className='flex h-full w-full'>
        <div className=' h-full flex rounded-l-xl overflow-hidden'>
         <img src={selectedAlbum.images[0].url} alt={selectedAlbum.name} className='object-cover' />
@@ -155,7 +155,7 @@ const Dashboard = () =>  {
        </div>          
       </div>
             
-      <button onClick={() => handleClosePopup()} className="relative -top-32 right-4"> <img src={cancelIcon} alt="Cancel Icon" /> </button>
+      <button onClick={() => handleClosePopup()} className="absolute top-2 right-2"> <img src={cancelIcon} alt="Cancel Icon" /> </button>
      </div>
     </div>
    )}
