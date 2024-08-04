@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 import Logo from '@/assets/logo.svg';
 import { Link } from 'react-router-dom';
-import backgroundImage from '@/assets/init_background.jpg';
+import backgroundImage from '../../assets/init_background.jpg';
 
 export function Signup() {
  const [name, setName] = useState('');

@@ -26,7 +26,7 @@ export function Login() {
  return (
   <>
    {isAuthenticated && <Navigate to='/dashboard' />}
-   <div className="bg-fundo bg-no-repeat h-screen" style={{backgroundImage: `url(${backgroundImage})`}}>
+   <div className="bg-no-repeat bg-cover h-screen" style={{backgroundImage: `url(${backgroundImage})`}}>
     <div className="flex items-center justify-center h-screen backdrop-brightness-50 backdrop-blur-sm">
      {/* Container */}
      <div className="flex justify-center max-w-[544px] w-1/2 h-2/3 py-14 bg-white rounded-3xl">
