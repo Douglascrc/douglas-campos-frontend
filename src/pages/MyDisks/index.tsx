@@ -92,7 +92,7 @@ const MyDisks = () => {
    <div className="mt-10 flex flex-wrap pl-10 pb-10 gap-4">
     {albums.length > 0 ? (
      albums.map((album, i) => (
-      <div onClick={() => handleOpenPopup(album)} key={i} style={{ backgroundImage: `url(${album.imageUrl})` }} className="bg-cover bg-no-repeat w-60 h-[245px] rounded-md">
+      <div onClick={() => handleOpenPopup(album)} key={i} style={{ backgroundImage: `url(${album.imageUrl})` }} className="bg-cover bg-no-repeat w-60 h-[245px] rounded-md cursor-pointer">
       </div>
      ))
     ) : (
