@@ -1,6 +1,6 @@
 import { AlbumModel } from '@/models/AlbumModel';
 import { album_api } from '@/services/apiService';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import Navbar from '@/components/Navbar';
 import cancelIcon from '@/assets/cancelIcon.svg';
@@ -83,9 +83,7 @@ const Dashboard = () =>  {
   }
  };
 
- useEffect(() => {
-  fetchAlbums();
- },[]);
+ 
 
   
 
