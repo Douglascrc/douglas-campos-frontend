@@ -27,7 +27,6 @@ export function Signup() {
    password
   };
 
-  console.log(data);
 
   await user_api.post('/create', data)
    .then(resp => {
